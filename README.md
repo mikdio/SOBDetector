@@ -27,5 +27,6 @@ Since the mutations induced by the storing process can be found only in one of t
 
 <div style="text-align:center; padding-top: 15px; padding-bottom: 15px; width:100%"><img src="./figures/figure_pipeline.png" /></div>
 
-
+## 3 Recquirements
+SOBDEtector is a portable jar file, written in java 1.8. Apart of a java runtime environment, it only requires the presence of a relatively recent version (recommended v1.6 and above) of samtools in the system. 
 
