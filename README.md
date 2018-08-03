@@ -28,5 +28,48 @@ Since the mutations induced by the storing process can be found only in one of t
 <div style="text-align:center; padding-top: 15px; padding-bottom: 15px; width:100%"><img src="./figures/figure_pipeline.png" /></div>
 
 ## 3 Recquirements
-SOBDEtector is a portable jar file, written in java 1.8. Apart of a java runtime environment, it only requires the presence of a relatively recent version (recommended v1.6 and above) of samtools in the system. 
+SOBDEtector is a portable jar file, written in java 1.8. Apart of a java runtime environment, it only requires the presence of a relatively recent version of samtools (recommended v1.6 and above) in the system. 
+
+## 4 Usage
+The current version (v0.1) of SOBDetector can be used in two ways. 
+
+### 4.1 By using a vcf file
+
+The first is the regular one, when the user provides the location of a vcf file and its corresponding bam's. This can be implemented in the following way:
+
+```bash
+java -jar SOBDetector_v0.1.jar \ 
+    --input-type VCF \ 
+    --input-variants ./input-variants.vcf \ 
+    --input-bam ./input.bam \ 
+    --output-variants ./output.vcf \ 
+    --only-passed true
+\end{lstlisting}
+```
+
+In line 1 we provide SOBDetector for the java virtual machine. Optional java arguments such as the maximum amount of allowed memory or number of threads can be specified here, though multi-threading is not supported yet and the only thing that is stored in the heap is the vcf file itself, which is generally less than 100 Mb in size.
+From line to we provide the mandatory arguments. These are the following:
+ The type of the provided variant file. It can either be "VCF" or "Table" (we'll discuss the latter later).
+ 
+* <strong> --input-variants: </strong>  Absolute or relative path that leads to the variant file (in this case, to a vcf).
+* <strong> --inpupt-bam: </strong> Absolute or relative path of the binary alignment file, from which the variants were determined. It is important that in case the variant caller alters the original orientation of the reads while its running, for example by performing local de-novo assembly, we use the altered BAM file here.
+* <strong> --output-variants </strong> Absolute or relative path to the desired output file. If the input is a vcf file, then this will be a vcf too. Note: all the folders must exist, the tool won't create them automatically.
+
+### 4.2 By using a tabulated file
+
+Many times the variants we are working with are collected into tab-delimited files (or R/pandas data frame). SOBDetector can work with this format too. All we have to do is to specify our intentions by setting the input-type to "Table" instead of "Vcf":
+
+```bash
+java -jar SOBDetector_v0.1.jar \ 
+    --input-type Table \ 
+    --input-variants ./input.table \ 
+    --input-bam ./input.bam \ 
+    --output-variants ./output.table \ 
+```
+
+Only the first four columns of such tab delimited files are mandatory. The necessary order of these attributes (using the standard vcf notation) has to be the following: 
+
+| CHROM | POS | REF | ALT |
+
+The file might contain other columns as well those will not be assessed. The output file of the analysis will have the same format as the input, containing the same columns, but additional attributes will be appended to them with the strand bias information. 
 
