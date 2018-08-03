@@ -44,7 +44,6 @@ java -jar SOBDetector_v0.1.jar \
     --input-bam ./input.bam \ 
     --output-variants ./output.vcf \ 
     --only-passed true
-\end{lstlisting}
 ```
 
 In line 1 we provide SOBDetector for the java virtual machine. Optional java arguments such as the maximum amount of allowed memory or number of threads can be specified here, though multi-threading is not supported yet and the only thing that is stored in the heap is the vcf file itself, which is generally less than 100 Mb in size.
