@@ -23,5 +23,9 @@ Since the mutations induced by the storing process can be found only in one of t
 
 <div style="text-align:center; padding-top: 15px; padding-bottom: 15px; width:100%"><img src="./figures/paired_end_reads4.svg" /></div>
 
-<p style="font-weight:bold">SOBDetector</p>
+<strong>SOBDetector reanalyzes the mutations stored in a vcf by any mutation caller, and evaluates whether the reads which support the alternate alleles have a strand orientation bias using the original binary alignment (BAM) files.</strong> Although it was created for human somatic mutation filtration, it can be used on samples of any species and in a germline variant calling analysiss as well.
+
+<div style="text-align:center; padding-top: 15px; padding-bottom: 15px; width:100%"><img src="./figures/figure_pipeline.svg" /></div>
+
+
 
