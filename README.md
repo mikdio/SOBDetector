@@ -55,6 +55,14 @@ From line to we provide the mandatory arguments. These are the following:
 * <strong> --inpupt-bam: </strong> Absolute or relative path of the binary alignment file, from which the variants were determined. It is important that in case the variant caller alters the original orientation of the reads while its running, for example by performing local de-novo assembly, we use the altered BAM file here.
 * <strong> --output-variants </strong> Absolute or relative path to the desired output file. If the input is a vcf file, then this will be a vcf too. Note: all the folders must exist, the tool won't create them automatically.
 
+The rest of the arguments are optional:
+
+\begin{itemize}
+* <strong> --only-passed</strong> Defaults to false, if set true, variants that have non-PASSED FILTER attributes in the input vcf will be ignored. (It speeds up execution time.)
+* <strong> --minBaseQuality</strong> Defaults to 0, the minimally considered base quality. If the quality of the considered base is less than this value, the read will be ignored.
+* <strong> --minMappingQuality</strong> Defaults to 0, the minimally considered mapping quality. If the mapping quality of read is less than this value, then the read is ignored. 
+\end{itemize}
+
 ### 4.2 By using a tabulated file
 
 Many times the variants we are working with are collected into tab-delimited files (or R/pandas data frame). SOBDetector can work with this format too. All we have to do is to specify our intentions by setting the input-type to "Table" instead of "Vcf":
