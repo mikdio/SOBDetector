@@ -57,7 +57,6 @@ From line to we provide the mandatory arguments. These are the following:
 
 The rest of the arguments are optional:
 
-\begin{itemize}
 * <strong> --only-passed</strong> Defaults to false, if set true, variants that have non-PASSED FILTER attributes in the input vcf will be ignored. (It speeds up execution time.)
 * <strong> --minBaseQuality</strong> Defaults to 0, the minimally considered base quality. If the quality of the considered base is less than this value, the read will be ignored.
 * <strong> --minMappingQuality</strong> Defaults to 0, the minimally considered mapping quality. If the mapping quality of read is less than this value, then the read is ignored. 
