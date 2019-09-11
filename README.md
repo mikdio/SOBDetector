@@ -81,7 +81,7 @@ The rest of the arguments are optional:
 * <strong> --only-passed</strong> Defaults to false, if set true, variants that have non-PASSED FILTER attributes in the input vcf will be ignored. (It speeds up execution time.)
 * <strong> --minBaseQuality</strong> Defaults to 0, the minimally considered base quality. If the quality of the considered base is less than this value, the read will be ignored.
 * <strong> --minMappingQuality</strong> Defaults to 0, the minimally considered mapping quality. If the mapping quality of read is less than this value, then the read is ignored.
-* <strong> --standardization-parameters</strong> The Bayesian prediction model requires the standardization and log-transformation of the predictive variables ($x_i$):
+* <strong> --standardization-parameters</strong> The Bayesian prediction model requires the standardization and log-transformation of the predictive variables (![](./figures/boldxi.png)):
 
 
 <div style="text-align:center"><img src="./figures/standardization.png"/></div>
