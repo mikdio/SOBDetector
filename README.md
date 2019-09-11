@@ -1,5 +1,7 @@
 # SOBDetector
 
+#### Download link: [https://github.com/mikdio/SOBDetector/releases](https://github.com/mikdio/SOBDetector/releases)
+
 ## 1. Theoretical background
 There are two options to choose from when collecting and preserving tumor specimens for molecular analysis: fresh frozen (FF) or formalin-fixed paraffin-embedded (FFPE). While inserting a tissue into a phenol solution and fresh freezing it directly after resection results in an excellent stability, keeping it under -80 °C is indisputably more expensive, than embedding it into paraffin blocks after formalin fixation. This fixation process however, introduces artifactual mutations (mostly in the C>T direction due to the deamination of cytosine bases induced by formalin) into the DNA strands which results in a much lower quality. The major benefit of this ffpe procedure is that the specimen becomes no longer sensitive to heat, so it can be work with at room temperature.
 
@@ -143,14 +145,14 @@ Only the first four columns of such tab delimited files are mandatory. The neces
 
 The file might contain other columns as well those will not be assessed. The output file of the analysis will have the same format as the input, containing the same columns, but additional attributes will be appended to them with the strand bias information. 
 
-<strong>Note:</strong> With the exception of the --passed-only argument, all the non-mandatory arguments can be specified in this mode as well. (The --passed-only argument in table mode is not checked, all the variants in the table file will be checked.)
+<strong>Note:</strong> With the exception of the --passed-only argument, all the non-mandatory arguments can be specified in this mode as well. (The --passed-only argument in table mode is not checked, all the variants in the table file will be evaluated!)
 
 #### The output:
 
 The output in this case is also a tabulated file: the original file with all of its columns, plus some extra columns containing the strand orientation bias info.
 
 ### 5 Contact
-Although we have checked SOBDetector on multiple cohorts, we are certain that the tool is not prepared to every single situation it might encounter. In case it runs into a java exception, please do not hesitate to contact us! It would help a lot if you could send a few variants with an excerpt of your bam containing the reads spanning over those variants too, so we can instantly analyze the problem and get back to you as soon as possible (with the solution, preferably)!
+Although I have validated SOBDetector on multiple types of alignment files, I am certain that the tool is not prepared to every single situation it might encounter. In case it runs into a java exception, please do not hesitate to contact me! It would help a lot if you could send a few variants with an excerpt of your bam containing the reads spanning over those variants too, so I can instantly analyze the problem and get back to you as soon as possible (with the solution, preferably)!
 
 [mikdio@cancer.dk](mailto:mikdio@cancer.dk) - Miklos Diossy
 
