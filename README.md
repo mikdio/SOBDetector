@@ -1,72 +1,3 @@
-<style type="text/css">
-
-body .main-container{ /* Normal  */
-  text-align: justify;
-}
-
-code.r{ /* Code block */
-  font-size: 11px;
-  white-space:pre !important;
-  overflow-x:scroll !important;
-  word-break: keep-all !important;
-  word-wrap: initial !important;
-}
-pre { /* Code block */
-  font-size: 12px;
-  white-space:pre !important;
-  word-break: keep-all !important;
-  word-wrap: initial !important;
-  color:steelblue;
-}
-
-.importantFrame{ /* Framed text */
-border: 1px solid;
-border-color: darkRed;
-color: black;
-background-color: #fcdbdb;
-padding-top: 5px;
-padding-bottom: 5px;
-border-radius: 0px;
-padding-left: 5px;
-padding-right: 5px;
-font-size: 14px;
-}
-
-.moderateFrame{ /* Framed text */
-border: 1px solid;
-border-color: #8c5400;
-color: black;
-background-color: #ffdea8;
-padding-top: 10px;
-padding-bottom: 10px;
-border-radius: 5px;
-padding-left: 10px;
-padding-right: 10px;
-font-size: 14px;
-}
-
-.interestingFrame{ /* Framed text */
-border: 0.5px solid;
-border-color: black;
-color: black;
-background-color: #E0E0E0;
-padding-top: 5px;
-padding-bottom: 5px;
-border-radius: 5px;
-padding-left: 10px;
-padding-right: 10px;
-font-size: 13px;
-font-family:sans
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-}
-</style>
-
 # SOBDetector
 
 ## 1. Theoretical background
@@ -151,11 +82,12 @@ The rest of the arguments are optional:
 * <strong> --minBaseQuality</strong> Defaults to 0, the minimally considered base quality. If the quality of the considered base is less than this value, the read will be ignored.
 * <strong> --minMappingQuality</strong> Defaults to 0, the minimally considered mapping quality. If the mapping quality of read is less than this value, then the read is ignored.
 * <strong> --standardization-parameters</strong> The Bayesian prediction model requires the standardization and log-transformation of the predictive variables ($x_i$):
-$$
-\mathbf{x}_i' = \frac{\mathbf{x}_i - \mu_i}{\sigma_i}, \hspace{1cm} \rightarrow \hspace{1cm} \mathbf{z}_i = log(1 + \mathbf{x}_i'),
-$$
-where $\mu_i$ and $\sigma_i$ are the mean and standard deviation of attribute $i$. The attributes are: <strong>TUMOR.ALT:</strong> number of alternate allele supporting reads at a given genomic coordinate, <strong>TUMOR.depth:</strong> number of reads covering a given genomic coordinate, <strong>TUMOR.AF:</strong> tumor allelic frequency (AF = ALT/depth),  <strong>SOBscore:</strong> the strand orientation bias score, evaluated by the tool. 
-By default, the tool uses the means and standard deviations of the TCGA dataset, on which the Bayesian model was originally trained, however, when the user have multiple samples, that belong to the same cohort, it is worth to use the means and standard deviations of the whole cohort instead. This can be specified by the <strong>--standardization-parameters</strong> argument. The parameters need to be stored in a simple tab-delimited text file. Example altStandardization.txt: 
+
+
+<div style="text-align:center"><img src="./figures/standardization.png"/></div>
+
+where ![](./figures/mu.jpg) and ![](./figures/sigma.png) are the mean and standard deviation of attribute _i_. The attributes are: <strong>TUMOR.ALT:</strong> number of alternate allele supporting reads at a given genomic coordinate, <strong>TUMOR.depth:</strong> number of reads covering a given genomic coordinate, <strong>TUMOR.AF:</strong> tumor allelic frequency (AF = ALT/depth),  <strong>SOBscore:</strong> the strand orientation bias score, evaluated by the tool. 
+By default, the tool uses the means and standard deviations of the TCGA dataset, on which the Bayesian model was originally trained, however, when the user have multiple samples, that belong to the same cohort, it is worth to use the means and standard deviations of the whole cohort instead. This can be specified by the <strong>--standardization-parameters</strong> argument. The parameters need to be stored in a simple tab-delimited text file, the first line of which should contain the means, the second the standard deviations of the four attributes. Example altStandardization.txt: 
 <pre style="color:#F0F0F0; font-family:monospace; background:#333333">
 TUMOR.ALT	TUMOR.depth	TUMOR.AF	SOBScore
 3.367	14.71	0.544	0.513
